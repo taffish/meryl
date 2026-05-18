@@ -1,0 +1,49 @@
+[package]
+name = "meryl"
+kind = "tool"
+version = "1.4.1"
+release = 1
+license = "Public Domain"
+main = "src/main.taf"
+
+[meta]
+domain = "bio"
+categories = ["kmer", "genome-assembly", "quality-control", "sequence-analysis"]
+keywords = ["meryl", "k-mer", "kmer", "histogram", "counting", "meryl-lookup", "Merqury", "assembly-evaluation"]
+description = "Meryl is a genomic k-mer counter and sequence utility used by Merqury and related assembly-evaluation workflows."
+
+[repository]
+url = "https://github.com/taffish/meryl"
+
+[command]
+name = "taf-meryl"
+
+[runtime]
+pipe = true
+command_mode = true
+
+[container]
+image = "ghcr.io/taffish/meryl:1.4.1-r1"
+dockerfile = "docker/Dockerfile"
+build_platforms = "linux/amd64"
+
+[upstream]
+name = "Meryl"
+type = "github"
+repo = "marbl/meryl"
+homepage = "https://github.com/marbl/meryl"
+release_url = "https://github.com/marbl/meryl/releases/tag/v1.4.1"
+downloads = "https://github.com/marbl/meryl/releases/download/v1.4.1/meryl-1.4.1.Linux-amd64.tar.xz"
+version = "1.4.1"
+license = "Public Domain"
+citation = "Rhie et al. 2020"
+doi = "10.1186/s13059-020-02134-9"
+pmid = "32928274"
+watch = "github-releases"
+strip_prefix = "v"
+
+[smoke]
+backend = "docker"
+timeout = 180
+exist = ["meryl", "meryl-lookup", "meryl-import", "meryl-analyze", "meryl-simple", "position-lookup", "gzip", "bzip2", "xz", "bash"]
+test = ["test \"$(cat /usr/local/share/doc/meryl/VERSION)\" = '1.4.1'", "meryl --version 2>&1 | grep -F 'meryl 1.4.1' >/dev/null", "meryl -h 2>&1 | grep -F 'COMMANDS:' >/dev/null", "meryl-lookup 2>&1 | grep -F 'usage:' >/dev/null", "meryl-import 2>&1 | grep -F 'usage:' >/dev/null", "meryl-simple 2>&1 | grep -F 'usage:' >/dev/null", "meryl-analyze 2>&1 | grep -F 'usage:' >/dev/null", "ldd \"$(command -v meryl)\" | grep -F 'libgomp' >/dev/null", "mkdir -p /tmp/taf-meryl-smoke && cd /tmp/taf-meryl-smoke && printf '>toy\\nACGTACGTACGTACGTACGTACGTACGTACGT\\n' > seq.fa && meryl k=21 memory=0.1 threads=1 count seq.fa output seq.meryl >/dev/null 2> meryl.log && test -d seq.meryl && meryl histogram seq.meryl > seq.hist && grep -E '^6[[:space:]]+2$' seq.hist >/dev/null && meryl statistics seq.meryl > seq.stats && grep -F 'distinct                    2' seq.stats >/dev/null && meryl print seq.meryl > seq.print && grep -F 'ACGTACGTACGTACGTACGTA' seq.print >/dev/null"]
