@@ -7,6 +7,23 @@ workflows.
 This app packages upstream Meryl `1.4.1` from the official
 `meryl-1.4.1.Linux-amd64.tar.xz` release asset.
 
+Release `1.4.1-r2` is a help-only TAFFISH update. It keeps the upstream
+software, Dockerfile, runtime dependencies, smoke tests, platform declaration,
+and command behavior unchanged from `1.4.1-r1`, and refreshes the terminal
+`taf-meryl --help` text.
+
+Package metadata:
+
+```text
+name: meryl
+command: taf-meryl
+version: 1.4.1-r2
+kind: tool
+image: ghcr.io/taffish/meryl:1.4.1-r2
+upstream release: v1.4.1
+upstream runtime version: meryl 1.4.1
+```
+
 ## Install
 
 ```sh

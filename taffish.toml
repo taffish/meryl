@@ -2,7 +2,7 @@
 name = "meryl"
 kind = "tool"
 version = "1.4.1"
-release = 1
+release = 2
 license = "Public Domain"
 main = "src/main.taf"
 
@@ -23,7 +23,7 @@ pipe = true
 command_mode = true
 
 [container]
-image = "ghcr.io/taffish/meryl:1.4.1-r1"
+image = "ghcr.io/taffish/meryl:1.4.1-r2"
 dockerfile = "docker/Dockerfile"
 build_platforms = "linux/amd64"
 

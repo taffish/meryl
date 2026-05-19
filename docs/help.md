@@ -1,4 +1,4 @@
-# meryl Help
+taf-meryl 1.4.1-r2
 
 Meryl is a genomic k-mer counter and sequence utility.
 
@@ -38,10 +38,12 @@ Packaged commands:
 
 Notes:
   Modern Meryl databases are directories, not old .mcdat/.mcidx pairs.
-  The packaged upstream release is Meryl 1.4.1 from the official Linux-amd64
-  binary tarball. Native support is linux/amd64 only. Docker and Podman runs
-  declare --platform linux/amd64 in the app wrapper, so arm64 hosts use amd64
-  emulation when the backend supports it.
+  This app packages Meryl 1.4.1 from the official Linux-amd64 binary tarball.
+  gzip, bzip2, xz, and bash are included for common Meryl input and helper
+  paths.
+  Native support is linux/amd64 only. Docker and Podman declare
+  --platform linux/amd64 in the app wrapper, so arm64 hosts use amd64
+  emulation when supported.
 
 Boundaries:
   This app packages Meryl only. Merqury, GenomeScope, plotting/report workflows,

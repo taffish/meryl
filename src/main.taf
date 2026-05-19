@@ -1,2 +1,2 @@
-<taf-app:container:ghcr.io/taffish/meryl:1.4.1-r1$@[docker/podman: --platform linux/amd64]>
+<taf-app:container:ghcr.io/taffish/meryl:1.4.1-r2$@[docker/podman: --platform linux/amd64]>
 meryl ::*ARGV*::
