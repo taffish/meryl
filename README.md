@@ -7,19 +7,19 @@ workflows.
 This app packages upstream Meryl `1.4.1` from the official
 `meryl-1.4.1.Linux-amd64.tar.xz` release asset.
 
-Release `1.4.1-r2` is a help-only TAFFISH update. It keeps the upstream
+Release `1.4.1-r3` is a license-metadata TAFFISH update. It keeps the upstream
 software, Dockerfile, runtime dependencies, smoke tests, platform declaration,
-and command behavior unchanged from `1.4.1-r1`, and refreshes the terminal
-`taf-meryl --help` text.
+help text, and command behavior unchanged from `1.4.1-r2`, while correcting
+the app/upstream license boundary.
 
 Package metadata:
 
 ```text
 name: meryl
 command: taf-meryl
-version: 1.4.1-r2
+version: 1.4.1-r3
 kind: tool
-image: ghcr.io/taffish/meryl:1.4.1-r2
+image: ghcr.io/taffish/meryl:1.4.1-r3
 upstream release: v1.4.1
 upstream runtime version: meryl 1.4.1
 ```
@@ -136,11 +136,15 @@ This app packages Meryl itself. It does not include Merqury, GenomeScope,
 assembly plotting/report workflows, or large example datasets. Use the separate
 `taf-merqury` app for the Merqury assembly-evaluation workflow.
 
+## License Boundary
+
+The TAFFISH app packaging files are licensed under Apache-2.0. The packaged upstream Meryl software is covered by: Public Domain. Bundled third-party components, datasets, models, and external resources keep their own license terms.
+
 ## Upstream
 
 - Upstream repository: <https://github.com/marbl/meryl>
 - Release: <https://github.com/marbl/meryl/releases/tag/v1.4.1>
-- License: public domain notice in upstream `README.licenses`, with additional
+- Upstream license: public domain notice in upstream `README.licenses`, with additional
   notices as indicated by upstream
 - Citation: Rhie et al. 2020, Genome Biology 21, 245
 - DOI: <https://doi.org/10.1186/s13059-020-02134-9>

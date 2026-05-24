@@ -1,4 +1,4 @@
-taf-meryl 1.4.1-r2
+taf-meryl 1.4.1-r3
 
 Meryl is a genomic k-mer counter and sequence utility.
 
@@ -44,6 +44,12 @@ Notes:
   Native support is linux/amd64 only. Docker and Podman declare
   --platform linux/amd64 in the app wrapper, so arm64 hosts use amd64
   emulation when supported.
+
+License:
+  TAFFISH app packaging: Apache-2.0.
+  Upstream software: Public Domain.
+  Bundled components, data, models, and external resources keep their
+  own license terms.
 
 Boundaries:
   This app packages Meryl only. Merqury, GenomeScope, plotting/report workflows,
